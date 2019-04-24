@@ -23,16 +23,23 @@ class Player:
                 print(exp.args[0])
             #FIXME Let the user enter again the value, recall set_gamble and input an exit value?
 
-
-
     def set_score(self):
         try:
-            self.score += int(input(f"Entrez score du joueur {self.name}: "))
-        except ValueError:
-            print("Not a number entered")
+            score = int(input(f"Entrez score du joueur {self.name}: "))
+            self.score += score
+        except ValueError as exp:
+            if exp.args[0].__contains__('invalid literal for int() with base 10:'):
+                print("Enter a number")
+            else:
+                print(exp.args[0])
+            #FIXME Let the user enter again the value, recall set score and input an exit value?
 
 
 def player_creation():
+    """
+    Create the list of the players
+    :return: a list of Player's object
+    """
     player_list_creation = True
     players = []
     while player_list_creation:
@@ -50,7 +57,7 @@ def main():
 
     for round in range(1, 3):
         # Start gambling
-        # FIXME the android won't use a loop but a clic button
+        # FIXME the android app won't use a loop but a clic button
         print(f"Round {round}", "Gambling !!!")
         for player in players: player.set_gamble(round)
 
