@@ -17,7 +17,10 @@ class Player:
                 raise ValueError("Enter a postive number")
             self.gamble[round] = gamble
         except ValueError as exp:
-            print(exp.args[0])
+            if exp.args[0].__contains__('invalid literal for int() with base 10:'):
+                print("Enter a number")
+            else:
+                print(exp.args[0])
             #FIXME Let the user enter again the value, recall set_gamble and input an exit value?
 
 
