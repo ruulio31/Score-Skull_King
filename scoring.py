@@ -18,10 +18,10 @@ class Player:
             self.gamble[round] = gamble
         except ValueError as exp:
             if exp.args[0].__contains__('invalid literal for int() with base 10:'):
-                print("Enter a number")
+                print("Only the numbers are accepted")
             else:
                 print(exp.args[0])
-            #FIXME Let the user enter again the value, recall set_gamble and input an exit value?
+            self.set_gamble(round)
 
     def set_score(self):
         try:
@@ -29,10 +29,10 @@ class Player:
             self.score += score
         except ValueError as exp:
             if exp.args[0].__contains__('invalid literal for int() with base 10:'):
-                print("Enter a number")
+                print("Only the numbers are accepted")
             else:
                 print(exp.args[0])
-            #FIXME Let the user enter again the value, recall set score and input an exit value?
+            self.set_score()
 
 
 def player_creation():
